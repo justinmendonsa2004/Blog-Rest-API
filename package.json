@@ -1,0 +1,26 @@
+{
+  "name": "blog-rest-api",
+  "version": "1.0.0",
+  "description": "Restful blog api",
+  "keywords": [
+    "blog",
+    "api",
+    "restful",
+    "reset",
+    "api"
+  ],
+  "license": "ISC",
+  "author": "justin mendonsa",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "mongoose": "^9.2.0",
+    "nodemon": "^3.1.11"
+  }
+}
