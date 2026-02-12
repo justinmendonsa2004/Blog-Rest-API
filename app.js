@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 dotenv.config();
 const connectMongodb = require("./init/mongodb");
-const { authRoute } = require("./routes");
+const { authRoute } = require("./routes/auth");
 
 //init app
 const app = express();
@@ -11,10 +11,12 @@ const app = express();
 //connect database
 connectMongodb();
 
+app.use("/auth", authRoutes);
+
 //third-party middleware
 app.use(express.json({ limit: "500mb" }));
 app.use(bodyParser.urlencoded({ limit: "500mb", extended: true }));
 
 //route section
-app.use("/api/v1/auth", authRoute);
+app.use("/auth", authRoutes); //app.use("/api/v1/auth", authRoute);
 module.exports = app;

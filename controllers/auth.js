@@ -1,17 +1,18 @@
-const { User } = require("../models");
+//const { User } = require("../models");
+exports.authController = {
+  signup: async (req, res) => {
+    try {
+      const { name, email, password, role } = req.body;
 
-const signup = async (req, res, next) => {
-  try {
-    const { name, email, password, role } = req.body;
+      const newUser = new User({ name, email, password, role });
 
-    const newUser = new User({ name, email, password, role });
+      await newUser.save();
 
-    await newUser.save();
-
-    res.status(201).json({ message: "user registererd successfully" });
-  } catch (error) {
-    next(error);
-  }
+      res.status(201).json({ message: "user registererd successfully" });
+    } catch (error) {
+      res.status(500).json({ error: error.message }); // next(error);
+    }
+  },
 };
 
 module.exports = { signup };
